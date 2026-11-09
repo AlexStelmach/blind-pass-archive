@@ -37,6 +37,84 @@ footer{border-top:1px solid #393239;margin:0 auto;padding:30px 24px 55px;max-wid
 @media(max-width:750px){.hero h1{font-size:clamp(46px,8.1vw,80px)}.hero picture{width:75vw;right:-10vw}}
 @media(max-width:600px){header{height:68px;padding:0 18px}.brand{font-size:16px}nav{font-size:9px}.hero{min-height:max(790px,calc(100svh - 68px));padding:57px 18px 29px;justify-content:flex-start}.hero:before{background:linear-gradient(180deg,#0c0d0f 0%,rgba(12,13,15,.85) 24%,rgba(12,13,15,.2) 53%,rgba(12,13,15,.15) 82%,#0c0d0f 100%)}.hero picture{width:min(105vw,580px);right:-21vw;bottom:0;mask-image:linear-gradient(to bottom,transparent 0%,#000 10%,#000 85%,transparent 100%)}.hero h1{font-size:clamp(40px,11.4vw,59px);margin:32px 0 25px}.eyebrow{font-size:9px;letter-spacing:.22em}.deck{font-size:14px;line-height:1.7;max-width:285px;text-shadow:0 1px 15px #000}.herofoot{margin-top:auto;font-size:9px;text-shadow:0 0 12px #000}.reader{padding:65px 18px 75px}.reader h2{font-size:33px}.prose{padding-top:34px;line-height:1.75}.readerbar{align-items:start;flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* BP hero layout fix 2026-11-09 */
+
+/* Full-bleed artwork: remove the visible image rectangle and scale subjects correctly. */
+.hero{
+  background:#0c0d0f;
+  justify-content:flex-start;
+  padding-top:clamp(140px,17vh,190px);
+  padding-bottom:100px;
+}
+.hero picture{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+.hero picture img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(12,13,15,.87) 0%,rgba(12,13,15,.56) 25%,rgba(12,13,15,.17) 48%,transparent 73%),
+    linear-gradient(0deg,rgba(12,13,15,.42),transparent 20%);
+}
+.hero > div{position:relative;z-index:2}
+.herofoot{
+  position:absolute;
+  z-index:3;
+  bottom:34px;
+  left:max(24px,calc((100vw - 1120px)/2));
+  right:max(24px,calc((100vw - 1120px)/2));
+  margin:0;
+}
+.herofoot a{
+  border-bottom:1px solid #625058;
+  padding:10px 5px;
+  background:rgba(12,13,15,.35);
+}
+@media(max-width:800px){
+  .hero h1{font-size:clamp(42px,8vw,70px)}
+  .hero picture img{object-position:58% center}
+}
+@media(max-width:600px){
+  .hero{
+    min-height:max(820px,calc(100svh - 68px));
+    padding:57px 18px 30px;
+    justify-content:flex-start;
+  }
+  .hero picture{
+    top:22%;
+    bottom:auto;
+    height:84%;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,black 13%,black 91%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,black 13%,black 91%,transparent 100%);
+  }
+  .hero picture img{object-position:center center}
+  .hero::before{
+    background:linear-gradient(180deg,#0c0d0f 0%,rgba(12,13,15,.93) 24%,rgba(12,13,15,.28) 49%,rgba(12,13,15,.08) 79%,#0c0d0f 100%);
+  }
+  .hero h1{font-size:clamp(40px,11.4vw,59px);margin:32px 0 25px}
+  .eyebrow{font-size:9px;letter-spacing:.22em}
+  .deck{font-size:14px;line-height:1.7;max-width:285px;text-shadow:0 1px 15px #000}
+  .herofoot{left:18px;right:18px;bottom:30px;font-size:9px;text-shadow:0 0 12px #000}
+}
+
 </style></head>
 <body><div class="progress" id="progress"></div>
 <header><a class="brand" href="#top">BLIND PASS<i>.</i></a><nav><a href="#chapter">К главе ↓</a></nav></header>
