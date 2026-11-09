@@ -115,6 +115,68 @@ footer{border-top:1px solid #393239;margin:0 auto;padding:30px 24px 55px;max-wid
   .herofoot{left:18px;right:18px;bottom:30px;font-size:9px;text-shadow:0 0 12px #000}
 }
 
+
+/* Centered editorial grid — approved placement for desktop and mobile */
+header{
+  max-width:1460px;
+}
+.hero{
+  --archive-side: max(32px, calc((100vw - 1420px) / 2));
+  padding-left:var(--archive-side);
+  padding-right:var(--archive-side);
+}
+.hero > div:not(.herofoot){
+  width:min(820px, 56vw);
+  max-width:100%;
+}
+.hero h1{
+  max-width:100%;
+}
+.deck{max-width:470px}
+.herofoot{
+  position:absolute;
+  z-index:3;
+  left:var(--archive-side);
+  right:var(--archive-side);
+  bottom:34px;
+  margin:0;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:28px;
+}
+.herofoot > span, .herofoot > a{
+  text-shadow:0 2px 12px rgba(0,0,0,.7);
+}
+.herofoot > a{
+  padding:7px 0;
+  border-bottom:1px solid #625058;
+}
+@media(min-width:1400px){
+  .hero picture img{
+    object-position:52% top;
+  }
+}
+@media(max-width:900px){
+  .hero{--archive-side:22px;}
+  .hero > div:not(.herofoot){width:min(680px, 65vw);}
+  .herofoot{bottom:28px;}
+}
+@media(max-width:600px){
+  .hero{--archive-side:18px;}
+  .hero > div:not(.herofoot){width:100%;max-width:100%;}
+  .hero h1{max-width:100%;}
+  .herofoot{
+    left:18px;
+    right:18px;
+    bottom:30px;
+    margin:0;
+    gap:12px;
+    align-items:flex-end;
+    font-size:9px;
+  }
+  .herofoot > a{white-space:nowrap;}
+}
+
 </style></head>
 <body><div class="progress" id="progress"></div>
 <header><a class="brand" href="#top">BLIND PASS<i>.</i></a><nav><a href="#chapter">К главе ↓</a></nav></header>
